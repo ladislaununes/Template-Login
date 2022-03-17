@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <!-- CSS do WOW -->
+    <link rel="stylesheet" href="css/animate.css">
+    <style>
+        body {
+            font-family: 'Calibri';
+            height: 97vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        main {
+            display: flex;
+            width: 70%;
+        }
+
+        section, form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        section { 
+            width: 40%;
+            justify-content: center;
+            background-color: #58af9c;
+            color: white;
+            text-align: center;
+            border-top-left-radius: 15px;
+            border-bottom-left-radius: 15px;
+        }
+
+        section p { color: #d1d1d1;}
+
+        section button {
+            width: 150px;
+            border: 1px solid white;
+            border-radius: 15px;
+            padding: 10px;
+            background-color: transparent;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        section button:hover {
+            background-color: white;
+            color: #58af9c;
+            transition: all 0.4s;
+        }
+        
+        aside { 
+            width: 60%;
+            text-align: center;
+            padding: 20px 10px; 
+        } 
+
+        aside button {
+            width: 150px;
+            border-radius: 15px;
+            border: none;
+            padding: 10px;
+            background-color: #58af9c;
+            color: white;
+        }
+
+        input {
+            width: 350px;
+            padding: 10px; 
+            margin-bottom: 7px; 
+            border: 1px solid #ccc;
+        }
+        p { font-size: 1.2em; }
+        h2 { font-weight: bold; font-size: 2em; }
+        section h2 { margin-bottom: 0; }
+        aside h2 { color: #58af9c; font-weight: bold; }
+        /* Login */
+        #login, #up {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <section class="wow fadeInDown">
+            <h2>Welcome Back!</h2>
+            <p>To keep connected with us <br> please login with your personal info</p>
+            <button onclick="trocarForm('in')" id="in">SIGN IN</button>
+            <button onclick="trocarForm('up')" id="up">SIGN UP</button>
+        </section>
+        <aside>
+            <form action="" method="post" id="createAccount">
+                <h2 class="wow fadeInDownBig" data-wow-delay="1s">Create Account</h2>
+                <input type="text" name="" id="" placeholder="Name" class="wow slideInRight" data-wow-delay="1.5s">
+                <input type="email" name="" id="" placeholder="Email" class="wow slideInRight" data-wow-delay="2s">
+                <input type="password" name="" id="" placeholder="Password" class="wow slideInRight" data-wow-delay="2.5s">
+                <button class="wow slideInLeft" data-wow-delay="3s">SIGN UP</button>
+            </form>
+            <form action="" method="post" id="login">
+                <h2 class="wow fadeInDownBig" data-wow-delay="1s">Login</h2>
+                <input type="text" name="" id="" placeholder="Name" class="wow slideInRight" data-wow-delay="1.5s">
+                <input type="password" name="" id="" placeholder="Password" class="wow slideInRight" data-wow-delay="2s">
+                <button class="wow slideInLeft" data-wow-delay="3s">SIGN IN</button>
+            </form>
+        </aside>
+    </main>
+    <!-- JS do WOW -->
+    <script src="js/wow.js"></script>
+    <script>
+        wow = new WOW(
+        {
+            animateClass: 'animated',
+            offset:       100,
+            callback:     function(box) {
+              console.log("WOW: animating <" + box.tagName.toLowerCase() + ">")
+            }
+        });
+        wow.init();
+    </script>
+    <script>
+        function trocarForm(i) {
+            var estado
+            if(i == 'in')
+                estado = true
+            else
+                estado = false
+            
+            if(estado == true) {
+                var createAccount = window.document.getElementById('createAccount')
+                createAccount.style.display = 'none'
+                var login = window.document.getElementById('login')
+                login.style.display = 'flex'
+                window.document.getElementById('in').style.display = 'none'
+                window.document.getElementById('up').style.display = 'block'
+                estado = false
+            } else {
+                var login = window.document.getElementById('login')
+                login.style.display = 'none'
+                var createAccount = window.document.getElementById('createAccount')
+                createAccount.style.display = 'flex'
+                window.document.getElementById('in').style.display = 'block'
+                window.document.getElementById('up').style.display = 'none'
+                estado = true
+            }
+        }
+    </script>
+</body>
+</html>
